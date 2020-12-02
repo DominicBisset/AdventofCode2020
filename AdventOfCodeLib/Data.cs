@@ -23,6 +23,10 @@ namespace AdventOfCode.Lib
 
             return output;
         }
+        public List<string> AsListOfStrings()
+        {
+            return new List<string>(fileData);
+        }
 
 
     }
