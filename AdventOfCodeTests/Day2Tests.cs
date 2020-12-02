@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AdventOfCode.Lib.Day2;
+using AdventOfCode.Lib.Puzzles.Day2;
+using AdventOfCode.Lib.Helpers;
 
 namespace AdventOfCode.Tests
 {
@@ -14,10 +15,11 @@ namespace AdventOfCode.Tests
                 "1-3 b: cdefg",
                 "2-9 c: ccccccccc"
             };
+            var data = new StringData(passwordAndPolicyStrings);
             int expectedOutput = 2;
-            Day2 day2 = new Day2();
+            Day2 day2 = new Day2(data);
 
-            var actualOutut = day2.CountPasswordsCorrect2A(passwordAndPolicyStrings);
+            var actualOutut = day2.Puzzle1Solution();
 
 
             Assert.AreEqual(expectedOutput, actualOutut);
@@ -31,10 +33,11 @@ namespace AdventOfCode.Tests
                 "1-3 b: cdefg",
                 "2-9 c: ccccccccc"
             };
+            var data = new StringData(passwordAndPolicyStrings);
             int expectedOutput = 1;
-            Day2 day2 = new Day2();
+            Day2 day2 = new Day2(data);
 
-            var actualOutut = day2.CountPasswordsCorrect2B(passwordAndPolicyStrings);
+            var actualOutut = day2.Puzzle2Solution();
 
 
             Assert.AreEqual(expectedOutput, actualOutut);

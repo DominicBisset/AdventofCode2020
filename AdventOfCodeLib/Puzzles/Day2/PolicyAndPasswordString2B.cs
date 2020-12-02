@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace AdventOfCode.Lib.Day2
+namespace AdventOfCode.Lib.Puzzles.Day2
 {
     public class PolicyAndPasswordString2B
     {

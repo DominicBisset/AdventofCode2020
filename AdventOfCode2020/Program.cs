@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using AdventOfCode.Lib;
-using AdventOfCode.Lib.Day2;
+using AdventOfCode.Lib.Helpers;
+using AdventOfCode.Lib.Puzzles.Day1;
+using AdventOfCode.Lib.Puzzles.Day2;
 
 namespace AdventOfCode2020
 {
@@ -9,28 +10,28 @@ namespace AdventOfCode2020
     {
         static void Main(string[] args)
         {
-            Day2();
+
+            SolveDay1();
+            SolveDay2();
         }
 
-        private static void Day1()
+        private static void SolveDay1()
         {
-            List<int> day1aData = new Data(".\\Data\\Day1a.txt").AsListOfInts();
-            Day1 day1 = new Day1();
-            var output = day1.ExpensesAmount1A(day1aData);
-            Console.WriteLine(output);
-            output = day1.ExpensesAmount1B(day1aData);
-            Console.WriteLine(output);
+            IntData data = new IntData(".\\Data\\Day1a.txt");
+            Day1 day = new Day1(data);
+            Console.WriteLine("Day1");
+            day.SolveToConsole();
+            Console.WriteLine("Press any key to continue");
             Console.ReadKey();
         }
 
-        private static void Day2()
+        private static void SolveDay2()
         {
-            List<string> data = new Data(".\\Data\\Day2a.txt").AsListOfStrings();
-            Day2 day2 = new Day2();
-            var output = day2.CountPasswordsCorrect2A(data);
-            Console.WriteLine(output);
-            output = day2.CountPasswordsCorrect2B(data);
-            Console.WriteLine(output);
+            StringData data = new StringData(".\\Data\\Day2a.txt");
+            Day2 day = new Day2(data);
+            Console.WriteLine("Day2");
+            day.SolveToConsole();
+            Console.WriteLine("Press any key to continue");
             Console.ReadKey();
         }
     }
