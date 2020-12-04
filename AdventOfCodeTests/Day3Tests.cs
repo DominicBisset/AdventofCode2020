@@ -10,7 +10,7 @@ namespace AdventOfCode.Tests
     public class TestDay3
     {
         [TestMethod]
-        public void TestDay2A()
+        public void TestPartA()
         {
             string[] slopeDefinition = new string[] {
                 "..##.......",
@@ -36,7 +36,7 @@ namespace AdventOfCode.Tests
         }
 
         [TestMethod]
-        public void TestDay2B()
+        public void TestPartB()
         {
             string[] slopeDefinition = new string[] {
                 "..##.......",

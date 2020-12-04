@@ -9,7 +9,7 @@ namespace AdventOfCode.Tests
     public class TestDay1
     {
         [TestMethod]
-        public void TestDay1A()
+        public void TestPartA()
         {
             int[] numbers = new int[] { 1721, 979, 366, 299, 675, 1456};
             var data = new IntData(numbers);
@@ -23,7 +23,7 @@ namespace AdventOfCode.Tests
         }
 
         [TestMethod]
-        public void TestDay1B()
+        public void TestPartB()
         {
             int[] numbers = new int[] { 1721, 979, 366, 299, 675, 1456 };
             var data = new IntData(numbers);

@@ -8,7 +8,7 @@ namespace AdventOfCode.Tests
     public class TestDay2
     {
         [TestMethod]
-        public void TestDay2A()
+        public void TestPartA()
         {
             string[] passwordAndPolicyStrings = new string[] { 
                 "1-3 a: abcde",
@@ -26,7 +26,7 @@ namespace AdventOfCode.Tests
         }
 
         [TestMethod]
-        public void TestDay2B()
+        public void TestPartB()
         {
             string[] passwordAndPolicyStrings = new string[] {
                 "1-3 a: abcde",
