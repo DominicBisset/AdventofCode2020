@@ -17,6 +17,11 @@ namespace AdventOfCode.Lib.Helpers
             parsedData = Parse();
         }
 
+        internal void TakeWhile()
+        {
+            throw new NotImplementedException();
+        }
+
         public Data(string[] sourceStrings)
         {
             stringData = sourceStrings;
