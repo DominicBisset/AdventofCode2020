@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using AdventOfCode.Lib.Helpers;
 using AdventOfCode.Lib.Puzzles.Day1;
+using AdventOfCode.Lib.Puzzles.Day10;
 using AdventOfCode.Lib.Puzzles.Day2;
 using AdventOfCode.Lib.Puzzles.Day3;
 using AdventOfCode.Lib.Puzzles.Day4;
@@ -25,8 +26,19 @@ namespace AdventOfCode2020
             //SolveDay5();
             //SolveDay6();
             //SolveDay7();
-            SolveDay9();
+            //SolveDay9();
+            SolveDay10();
         }
+        private static void SolveDay10()
+        {
+            var data = new IntData(".\\Data\\Day10a.txt");
+            var day = new Day10(data);
+            Console.WriteLine("Day10");
+            day.SolveToConsole();
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+        }
+
         private static void SolveDay9()
         {
             LongData data = new LongData(".\\Data\\Day9a.txt");
