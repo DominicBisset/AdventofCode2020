@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AdventOfCode.Lib.Puzzles.Day3
+namespace AdventOfCode.Lib.Helpers
 {
     public class Heading
     {

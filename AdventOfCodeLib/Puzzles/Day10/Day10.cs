@@ -43,12 +43,14 @@ namespace AdventOfCode.Lib.Puzzles.Day10
         public override long Puzzle2Solution()
         {
             var jolts = PrepareJoltList();
+            //return adaptorSubGroupArrangementsCount(jolts);
+
             var posibleOnwardConnections = new List<int>();
-            for(int i = 0 ; i < jolts.Count; i++)
+            for (int i = 0; i < jolts.Count; i++)
             {
                 int currentJolts = jolts[i];
                 int currentPossibleOnwardConnections = 0;
-                for(int j = 1; j <= maxJoltageChange && i + j < jolts.Count() ; j++)
+                for (int j = 1; j <= maxJoltageChange && i + j < jolts.Count(); j++)
                 {
                     if (jolts[i + j] <= currentJolts + maxJoltageChange)
                     {
@@ -64,7 +66,7 @@ namespace AdventOfCode.Lib.Puzzles.Day10
 
             var posiblePreviousConnections = new List<int>();
 
-            for (int i = jolts.Count -1; i >= 0; i--)
+            for (int i = jolts.Count - 1; i >= 0; i--)
             {
                 int currentJolts = jolts[i];
                 int currentPosiblePreviousConnections = 0;
@@ -93,7 +95,7 @@ namespace AdventOfCode.Lib.Puzzles.Day10
 
                 for (int i = subGroupStart; i < jolts.Count - 1; i++)
                 {
-                    if(posibleOnwardConnections[i] == 1 && posiblePreviousConnections[i+1] == 1)
+                    if (posibleOnwardConnections[i] == 1 && posiblePreviousConnections[i + 1] == 1)
                     {
                         subGroupEnd = i;
                         break;
@@ -103,8 +105,8 @@ namespace AdventOfCode.Lib.Puzzles.Day10
                     .Skip(subGroupStart)
                     .Take(1 + subGroupEnd - subGroupStart)
                     .ToList()
-                ) ;
-                subGroupStart = subGroupEnd  + 1;
+                );
+                subGroupStart = subGroupEnd + 1;
                 subGroupEnd = subGroupStart;
             }
 
@@ -116,6 +118,7 @@ namespace AdventOfCode.Lib.Puzzles.Day10
 
         }
 
+        Dictionary<List<int>, long> existingSubJoltGroups = new Dictionary<List<int>, long>();
 
         private long adaptorSubGroupArrangementsCount(List<int> sortedJoltsSubGroup)
         {
@@ -123,6 +126,11 @@ namespace AdventOfCode.Lib.Puzzles.Day10
             {
                 return 1;
             }
+            else if(existingSubJoltGroups.ContainsKey(sortedJoltsSubGroup))
+            {
+                return existingSubJoltGroups[sortedJoltsSubGroup];
+            }
+
 
             long connectionOptions = 0;
 
@@ -131,7 +139,10 @@ namespace AdventOfCode.Lib.Puzzles.Day10
             {
                 if(sortedJoltsSubGroup[i] <= maxNextVoltage)
                 {
-                    connectionOptions += adaptorSubGroupArrangementsCount(sortedJoltsSubGroup.Skip(i).ToList());
+                    var subList = sortedJoltsSubGroup.Skip(i).ToList();
+                    long subGroupCount = adaptorSubGroupArrangementsCount(subList);
+
+                    connectionOptions += subGroupCount;
                 }
                 else
                 {
@@ -140,26 +151,9 @@ namespace AdventOfCode.Lib.Puzzles.Day10
 
 
             }
+
+            existingSubJoltGroups.Add(sortedJoltsSubGroup, connectionOptions);
             return connectionOptions;
         }
-        //private long adaptorSubGroupArrangementsCount(List<int> sortedJoltsSubGroup)
-        //{
-        //    if (sortedJoltsSubGroup.Count() < 3)
-        //    {
-        //        return 1;
-        //    }
-
-        //    long connectionOptions = 1;
-        //    for (int i = 0; i < sortedJoltsSubGroup.Count - 1; i++)
-        //    {
-        //        int jolt = sortedJoltsSubGroup[i];
-        //        connectionOptions += sortedJoltsSubGroup
-        //                .Skip(i + 1)
-        //                .Take(maxJoltageChange)
-        //                .Count(jNext => jNext <= jolt + maxJoltageChange)
-        //                - 1;
-        //    }
-        //    return connectionOptions;
-        //}
     }
 }
