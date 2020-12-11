@@ -124,17 +124,42 @@ namespace AdventOfCode.Lib.Puzzles.Day10
                 return 1;
             }
 
-            long connectionOptions = 1;
-            for(int i = 0; i < sortedJoltsSubGroup.Count - 1; i++)
+            long connectionOptions = 0;
+
+            int maxNextVoltage = sortedJoltsSubGroup.First() + maxJoltageChange;
+            for(int i = 1; i <= maxJoltageChange && i <sortedJoltsSubGroup.Count; i++)
             {
-                int jolt = sortedJoltsSubGroup[i];
-                connectionOptions += sortedJoltsSubGroup
-                        .Skip(i + 1)
-                        .Take(maxJoltageChange)
-                        .Count(jNext => jNext <= jolt + maxJoltageChange)
-                        - 1;
+                if(sortedJoltsSubGroup[i] <= maxNextVoltage)
+                {
+                    connectionOptions += adaptorSubGroupArrangementsCount(sortedJoltsSubGroup.Skip(i).ToList());
+                }
+                else
+                {
+                    break;
+                }
+
+
             }
             return connectionOptions;
         }
+        //private long adaptorSubGroupArrangementsCount(List<int> sortedJoltsSubGroup)
+        //{
+        //    if (sortedJoltsSubGroup.Count() < 3)
+        //    {
+        //        return 1;
+        //    }
+
+        //    long connectionOptions = 1;
+        //    for (int i = 0; i < sortedJoltsSubGroup.Count - 1; i++)
+        //    {
+        //        int jolt = sortedJoltsSubGroup[i];
+        //        connectionOptions += sortedJoltsSubGroup
+        //                .Skip(i + 1)
+        //                .Take(maxJoltageChange)
+        //                .Count(jNext => jNext <= jolt + maxJoltageChange)
+        //                - 1;
+        //    }
+        //    return connectionOptions;
+        //}
     }
 }
